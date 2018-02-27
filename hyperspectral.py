@@ -6,22 +6,17 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import cv2
 
-image_list = []
+# To read the read and store it as a numpy array
 img = io.imread('hyper_reva.tif', plugin='tifffile')
-height, width, layers = img.shape
 
-rolled = list(np.rollaxis(img, -1))
+# To extract features of the image
+height, width, channels = img.shape
 
-for l in range(layers):
-    image_list.append(rolled[l])
+# This splits the array based on channels
+split = np.asarray(cv2.split(img))
+print(split.shape)
 
-# plt.imshow(cv2.cvtColor(image_list[0], cv2.COLOR_BGR2RGB))
-for i in image_list:
+# To display the image
+for i in split:
     plt.imshow(i)
-    # plt.imshow(i, cmap=plt.cm.Reds)
-    # plt.imshow(i, cmap=plt.cm.Greens)
-    # plt.imshow(i, cmap=plt.cm.Blues)
 plt.show()  # or io.show()
-
-# a = np.asarray(a)
-# print(a.shape)
