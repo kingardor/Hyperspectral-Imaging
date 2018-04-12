@@ -1,5 +1,10 @@
 #Image files
 *.tif
+*.png
 
 #Direcotries
 data/
+trainingData/
+
+hyperspectralModel.h5
+report*
